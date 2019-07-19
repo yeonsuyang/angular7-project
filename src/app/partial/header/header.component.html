@@ -1,0 +1,11 @@
+<nav class="navbar navbar-inverse navbar-fixed-top"  *ngIf="isLoggedIn$ | async as isLoggedIn">
+    <div class="container-fluid">
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a  href="/">홈</a></li>
+                <li><a  *ngIf="!token" routerLink="/login">로그인</a></li>
+                <li><a *ngIf="token" href="javascript:void(0)" (click)="logout()">로그아웃</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

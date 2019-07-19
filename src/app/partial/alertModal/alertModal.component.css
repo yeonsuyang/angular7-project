@@ -1,0 +1,71 @@
+@charset "utf-8";
+html,
+body {
+  height: 100%;
+}
+body {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #f3f3f3;
+}
+.error-title {
+    color: #56acf2;
+    font-size: 50px;
+    font-weight: bold;
+}
+.error-title02 {
+    color: #009bdb;
+    font-size: 17px;
+    padding-top: 0px;
+}
+.error-title03 {
+    color: #333333;
+    font-size: 15px;
+    padding-top: 10px;
+}
+.error-box{margin: 0 auto;
+    text-align: center;
+}
+
+.custom-alert {  
+    width:300px;  
+}  
+  
+.modal-backdrop.in {  
+    opacity: 0.9;  
+}  
+  
+.modal-body {  
+    background-color: whitesmoke;  
+    border-radius: 11px;  
+}  
+  
+.modal {  
+    background-color: rgba(58, 51, 51, 0.4);  
+    padding-top:150px;  
+}  
+  
+.confirm-message {  
+    font-family:'Times New Roman', Times, serif;  
+    font-size:20px;  
+    font-weight:bold;  
+    margin-bottom:0px;  
+    margin-top:5px;  
+}  
+  
+.confirm-button {  
+    text-align: center;  
+    margin: 15px 0px 15px 0px;  
+}  
+  
+.btn-no {  
+    background-color: #f4516c;  
+    color:white;  
+}  
+  
+.btn-yes {  
+    background-color: #716aca;  
+    color:white;  
+}   

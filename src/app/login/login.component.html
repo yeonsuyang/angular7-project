@@ -1,0 +1,45 @@
+<div class="text-center login-box">
+    <form class="form-signin" [formGroup]="loginForm">
+        <div class="col-auto">
+            <div class="input-group-i" style="padding-top: 25px">
+                <input type="text" formControlName="username" [(ngModel)]="username" class="form-control"
+                    placeholder="아이디" autofocus=""
+                    [ngClass]="{ 'is-invalid': submitted && loginForm.controls.username.errors }" />
+            </div>
+            <div *ngIf="submitted && !!loginForm.controls.username.errors" class="text-danger">
+                <div *ngIf="!!loginForm.controls.username.errors.required">아이디를 입력해주세요.</div>
+            </div>
+            <div class="mb1"></div>
+            <div class="input-group-i" style="padding-top: 10px">
+
+                <input type="password" formControlName="password" [(ngModel)]="password" class="form-control"
+                    placeholder="비밀번호" [ngClass]="{ 'is-invalid': submitted && loginForm.controls.password.errors }" />
+            </div>
+            <div *ngIf="submitted && !!loginForm.controls.password.errors" class="text-danger">
+                <div *ngIf="!!loginForm.controls.password.errors.required">비밀번호를 입력해주세요.</div>
+            </div>
+            <div class="input-group-i" style="padding-top: 10px">
+
+                <input type="password" formControlName="confirmpw" [(ngModel)]="confirmpw" class="form-control"
+                    placeholder="비밀번호 재입력 (폼기능 테스트)" (keyup.enter)="focusableSubmit.click()"
+                    [ngClass]="{ 'is-invalid': submitted && loginForm.controls.confirmpw.errors }" />
+            </div>
+            <div *ngIf="submitted && !!loginForm.controls.confirmpw.errors" class="text-danger">
+                <div *ngIf="!!loginForm.controls.confirmpw.errors.required">비밀번호를 확인해주세요.</div>
+                <div *ngIf="!!loginForm.controls.confirmpw.errors.mustMatch">비밀번호가 일치하지 않습니다.</div>
+            </div>
+            <div class="mb1"></div>
+            <div *ngIf="loginFailed" class="text-danger">
+                아이디 또는 비밀번호를 다시 확인하세요.
+            </div>
+        </div>
+        <div class="form-check form-check-inline checks mb2" style="padding: 10px">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="remember-me"
+                [(ngModel)]="rememberId" [ngModelOptions]="{standalone: true}">
+            <label class="form-check-label" for="inlineCheckbox1">ID 기억하기</label>
+        </div>
+        <button #focusableSubmit class="btn btn-lg btn-info btn-block btnlog" type="button"
+            (click)="onSubmit()">로그인</button>
+    </form>
+</div>
+

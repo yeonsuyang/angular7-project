@@ -1,0 +1,76 @@
+<div *ngIf="message" class="modal" tabindex="-1" role="dialog" style="display:block!important">
+	<div class="modal-dialog custom-alert" role="document" style="width: 400px;padding-top: 100px;">
+		<div class="modal-content">
+
+			<div *ngIf="message?.type == 'confirm'">
+				<div class="modal-header" style="background:#1baec5">
+					<h4 class="modal-title" id="exampleModalLabel">Confirm</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-12">
+							<h4 class="text-center">{{message.text.reason}}</h4>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<p class="confirm-button">
+								<a (click)="message.siFn()">
+									<button class="btn btn-primary">확인</button>
+								</a>
+								<a (click)="message.noFn()" class="ml5">
+									<button class="btn btn-secondary">취소</button>
+								</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div *ngIf="message?.type == 'success'"> 
+				<div class="modal-header" style="background:#5cb85c">
+					<h4 class="modal-title" id="exampleModalLabel">Success</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-12">
+							<h4 class="text-center">{{message.text.reason}}</h4>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<p class="confirm-button">
+								<a (click)="message.siFn()">
+									<button class="btn btn-success">Close</button>
+								</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div *ngIf="message?.type == 'error'">
+				<div class="modal-header" style="background:#d9534f">
+					<h4 class="modal-title" id="exampleModalLabel">Error {{message.text.status}}</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-12">
+							<h4 class="text-center">{{message.text.reason}}</h4>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<p class="confirm-button">
+								<a (click)="message.siFn()">
+									<button type="button" class="btn btn-danger btn-error">Close</button>
+								</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
