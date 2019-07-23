@@ -4,12 +4,12 @@ import { AuthService } from './auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
-	constructor(private router: Router, private authService: AuthService) {
-	}
+    constructor(private router: Router, private authService: AuthService) {
+    }
 
-	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
 
-		// session storage token || local storage token 있으면 ok
+        // session storage token || local storage token 있으면 ok
 		/* if (this.authService.checkSessionToken() || this.authService.checkLocalToken()) {
 		
 			if (this.authService.checkSessionToken() &&  // session은 있으면서
@@ -24,16 +24,15 @@ export class AuthGuard implements CanActivate {
 				return true;
 			}
 		} */
-        console.log(1);
-        if(localStorage.getItem('user') !== null && localStorage.getItem('user') !== ''){
+        if (localStorage.getItem('user') !== null && localStorage.getItem('user') !== '') {
+            this.authService.setloggedIn();
             return true;
         }
 
-         console.log(3);
-		// 다 아니면 로그인 페이지로
-		//this.authService.setloggedOut();
-		this.router.navigate(['/login']);
-		//  location.reload();
-		return false;
-	}
+        // 다 아니면 로그인 페이지로
+        this.authService.setloggedOut();
+        this.router.navigate(['/login']);
+        //  location.reload();
+        return false;
+    }
 }

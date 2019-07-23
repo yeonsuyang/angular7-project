@@ -46,7 +46,7 @@ export class AuthService {
             observe: 'response',
             withCredentials: true
         };
-        const url = this.authUrl + 'mgmt/v1/forauthenticate';
+        const url = this.authUrl;
 
         return this.http.get<any>(url, requestOptions);
     } */
@@ -58,7 +58,7 @@ export class AuthService {
     }
 
     setAutorities() {
-        if (this.getDecodeLocalToken().authorities[0] === 'SUPERVISOR') {
+        if (this.getDecodeLocalToken().authorities[0] === 'admin') {
             this.autorities.next(true);
         } else {
             this.autorities.next(false);
@@ -109,7 +109,7 @@ export class AuthService {
         localStorage.removeItem('user');
         // this.oauthService.logOut();
         this.router.navigate(['/login']);
-        location.reload();
+        this.setloggedOut();
     }
 
     // get token
