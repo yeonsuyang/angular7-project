@@ -10,6 +10,7 @@ import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule, MatCheckboxModule } from '@angular/material';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 // basic
 import { AppRoutingModule } from './app-routing.module';
@@ -58,6 +59,7 @@ export function tokenGetter() {
         FormsModule,
         HttpClientModule,
         OAuthModule.forRoot(),
+        ModalModule.forRoot(),
         NgbModule,
         NgxDaterangepickerMd.forRoot(),
         BrowserAnimationsModule,

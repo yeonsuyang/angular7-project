@@ -16,12 +16,12 @@ export class ApiService {
 
     httpOptions = {
         headers: new HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+            'Content-Type': 'application/json'
         })
     };
 
     public getData2(httpurl: string) {
+        console.log('getData2');
         const url = httpurl;
         // const url = httpurl;
         return this.http.get<any>(url, this.httpOptions);

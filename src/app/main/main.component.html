@@ -1,9 +1,100 @@
 <div class="text-center">
-  hi
 
-  <!-- 오늘날짜 -->
-  <!-- 팝업 -->
-  <!-- 에러팝업 -->
-  <!-- json 가져와서 페이지네이션까지 -->
+    <!-- 오늘날짜 -->
+    <h4> Today : {{today}} </h4>
+    <!-- 팝업 -->
+    <br>
+    <br>
+    <h3>{{id}} 님 ! </h3>
+    <br>
+    <br>
+    <button class="btn btn-lg btn-info" type="button" (click)="popup2()">팝업</button>
+    <!-- 에러팝업 -->
+    <br><br>
+    <button class="btn btn-lg btn-info" type="button" (click)="errorPopup()">에러 메세지 팝업</button>
+    <!-- json 가져와서 페이지네이션까지 --> <br>
+    <div *ngIf="testFlag"><h4>에러 팝업 테스트 완료</h4></div>
+    <br>
+    <br>
+    <div class="rd">
+        <div class="text-right small">( Total count : {{pageInfo.totalElements}} )</div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">이름</th>
+                    <th scope="col">권한</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let users of pagedItems">
+                    <td><a href="javascript:void(0)" (click)="popup(users)">{{users.username}}</a></td>
+                    <td>{{users.authority}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example" class="text-center">
+            <!-- pager -->
+            <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                <li>
+                    <a [class.disabled]="pager.currentPage == 1" (click)="setPage(1)">First</a>
+                </li>
+                <li>
+                    <a [class.disabled]="pager.currentPage == 1" (click)="setPage(pager.currentPage - 1)">Previous</a>
+                </li>
+                <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                    <a [class.disabled]="pager.currentPage == page" (click)="setPage(page)">{{page}}</a>
+                </li>
+                <li>
+                    <a [class.disabled]="pager.currentPage == pager.totalPages"
+                        (click)="setPage(pager.currentPage + 1)">Next</a>
+                </li>
+                <li>
+                    <a [class.disabled]="pager.currentPage == pager.totalPages"
+                        (click)="setPage(pager.totalPages)">Last</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
 </div>
 
+<!-- S Modal 상세보기-->
+<div class="modal fade" bsModal #detailModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog"
+    aria-labelledby="detailModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document" style="width:250px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">USER 정보</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="detailModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="height: 100px;overflow: auto;">
+                <div class="text-center">
+               이름 : {{user.username}} <br>
+               권한 : {{user.authority}}
+               </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<!-- S Modal 상세보기-->
+<div class="modal fade" bsModal #testModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog"
+    aria-labelledby="testModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document" style="width:250px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">테스트 팝업</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="testModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="height: 100px;overflow: auto;">
+                <div class="text-center">
+                <h3>  팝업 테스트 !  </h3>
+               </div>
+            </div>
+        </div>
+    </div>
+</div> 

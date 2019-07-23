@@ -27,6 +27,7 @@
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
     "jquery": "^3.4.1",
+    "ngx-bootstrap": "^5.1.0",
     "ngx-bootstrap-modal": "^2.0.1",
     "ngx-daterangepicker-material": "^2.1.7",
     "ngx-logger": "^4.0.3",
